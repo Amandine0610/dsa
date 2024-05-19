@@ -10,23 +10,12 @@ class UniqueIntProcessor:
         self.seen = set()
 
     def process_file(self, input_file_path, output_file_path):
-        """
-        Process the input file to extract unique integers and save them sorted to the output file.
-
-        Args:
-            input_file_path (str): The path to the input file.
-            output_file_path (str): The path to the output file.
-        """
+        
         self.read_file(input_file_path)
         self.write_file(output_file_path)
 
     def read_file(self, input_file_path):
-        """
-        Read integers from the input file and add them to the set of seen integers.
-
-        Args:
-            input_file_path (str): The path to the input file.
-        """
+        
         with open(input_file_path, 'r') as input_file:
             for line in input_file:
                 cleaned_line = self.clean_line(line)
@@ -34,15 +23,7 @@ class UniqueIntProcessor:
                     self.seen.add(cleaned_line)
 
     def clean_line(self, line):
-        """
-        Clean and validate the input line.
 
-        Args:
-            line (str): The input line to clean and validate.
-
-        Returns:
-            int: The validated integer, or None if invalid.
-        """
         line = line.strip()
         if line:
             parts = line.split()
@@ -56,12 +37,7 @@ class UniqueIntProcessor:
         return None
 
     def write_file(self, output_file_path):
-        """
-        Write the sorted unique integers to the output file.
 
-        Args:
-            output_file_path (str): The path to the output file.
-        """
         with open(output_file_path, 'w') as output_file:
             for num in sorted(self.seen):
                 output_file.write(f"{num}\n")
