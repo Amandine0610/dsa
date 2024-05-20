@@ -7,7 +7,7 @@ import os
 
 class UniqueIntProcessor:
     def __init__(self):
-        self.seen = set()
+        self.seen = []
 
     def process_file(self, input_file_path, output_file_path):
         
@@ -20,7 +20,8 @@ class UniqueIntProcessor:
             for line in input_file:
                 cleaned_line = self.clean_line(line)
                 if cleaned_line is not None:
-                    self.seen.add(cleaned_line)
+                    if cleaned_line not in self.seen:
+                        self.seen.append(cleaned_line)
 
     def clean_line(self, line):
 
@@ -37,9 +38,9 @@ class UniqueIntProcessor:
         return None
 
     def write_file(self, output_file_path):
-
+        self.seen.sort()
         with open(output_file_path, 'w') as output_file:
-            for num in sorted(self.seen):
+            for num in self.seen:
                 output_file.write(f"{num}\n")
 
 if __name__ == "__main__":
