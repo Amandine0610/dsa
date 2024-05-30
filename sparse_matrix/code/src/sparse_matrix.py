@@ -106,7 +106,7 @@ def main():
         print(f"Error: {e}")
         return
 
-    output_dir = os.path.expanduser('~\\dsa\\sparse_matrix\\output')
+    output_dir = os.path.expanduser('~\\dsa\\sparse_matrix\\some_sample_results')
     os.makedirs(output_dir, exist_ok=True)
     output_file_path = os.path.join(output_dir, output_file_name)
     result_matrix.save_to_file(output_file_path)
